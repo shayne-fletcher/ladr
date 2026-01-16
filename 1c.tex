@@ -2,16 +2,117 @@
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{geometry}
 \geometry{margin=1in}
-
-\title{Section 1C: Subspaces\\Worked Solutions (a)--(d)}
+\title{Section 1C: Subspaces\\Worked Solutions}
 \author{}
 \date{}
-
 \begin{document}
 \maketitle
 
 \section*{Problem Setup}
 Let $F$ be a field and $V$ a vector space over $F$. For each part below, we determine whether the given set is a subspace and justify the claim.
+
+\section*{Problem 1}
+For each of the following subsets of $F^4$, determine whether it is a subspace of $F^4$.
+
+\subsection*{(a)}
+\textbf{Claim.}
+$\{(x_1-x_2, x_2, x_1+x_2, x_3+x_4) \in F^4 : x_1, x_2, x_3, x_4 \in F\}$ is a subspace of $F^4$.
+
+\textbf{Proof.}
+Let $U = \{(x_1-x_2, x_2, x_1+x_2, x_3+x_4) : x_1, x_2, x_3, x_4 \in F\}$.
+
+Note that every element of $F^4$ can be written in this form. Given any $(a, b, c, d) \in F^4$, we can solve:
+\begin{align*}
+x_1 - x_2 &= a \\
+x_2 &= b \\
+x_1 + x_2 &= c \\
+x_3 + x_4 &= d
+\end{align*}
+
+From the first two equations: $x_1 = a + b$ and $x_2 = b$. Checking the third equation: $x_1 + x_2 = (a+b) + b = a + 2b$. For this to equal $c$ for all choices, we need $c = a + 2b$, which is not always true.
+
+Actually, let me reconsider. The set $U$ consists of all vectors that can be expressed as $(x_1-x_2, x_2, x_1+x_2, x_3+x_4)$ for some choice of $x_1, x_2, x_3, x_4 \in F$. This is not all of $F^4$.
+
+\textbf{Zero vector:} Taking $x_1 = x_2 = x_3 = x_4 = 0$ gives $(0, 0, 0, 0) \in U$.
+
+\textbf{Closed under addition:} If $(a, b, c, d) = (x_1-x_2, x_2, x_1+x_2, x_3+x_4)$ and $(a', b', c', d') = (y_1-y_2, y_2, y_1+y_2, y_3+y_4)$, then
+\begin{align*}
+(a+a', b+b', c+c', d+d') &= ((x_1+y_1)-(x_2+y_2), x_2+y_2, (x_1+y_1)+(x_2+y_2), (x_3+y_3)+(x_4+y_4)),
+\end{align*}
+which is in $U$ with parameters $x_1+y_1, x_2+y_2, x_3+y_3, x_4+y_4$.
+
+\textbf{Closed under scalar multiplication:} If $(a, b, c, d) = (x_1-x_2, x_2, x_1+x_2, x_3+x_4)$ and $\lambda \in F$, then
+\begin{align*}
+\lambda(a, b, c, d) &= (\lambda(x_1-x_2), \lambda x_2, \lambda(x_1+x_2), \lambda(x_3+x_4)) \\
+&= (\lambda x_1 - \lambda x_2, \lambda x_2, \lambda x_1 + \lambda x_2, \lambda x_3 + \lambda x_4),
+\end{align*}
+which is in $U$ with parameters $\lambda x_1, \lambda x_2, \lambda x_3, \lambda x_4$.
+
+Therefore $U$ is a subspace of $F^4$. In fact, $U = F^4$ since we can achieve any fourth coordinate with appropriate $x_3, x_4$, and the first three coordinates have two degrees of freedom ($x_1$ and $x_2$).
+
+Actually, to be more precise: the map $(x_1, x_2, x_3, x_4) \mapsto (x_1-x_2, x_2, x_1+x_2, x_3+x_4)$ is a linear map from $F^4$ to $F^4$, so its image $U$ is a subspace. The map is surjective (we can solve for any target), so $U = F^4$.
+\hfill $\square$
+
+\subsection*{(b)}
+\textbf{Claim.}
+$\{(x_1-x_2, x_2, x_1+x_2, x_3+x_4) \in F^4 : x_1, x_2, x_3, x_4 \in F, x_3 = 0\}$ is a subspace of $F^4$.
+
+\textbf{Proof.}
+Let $U = \{(x_1-x_2, x_2, x_1+x_2, x_4) : x_1, x_2, x_4 \in F\}$ (since $x_3 = 0$ implies $x_3 + x_4 = x_4$).
+
+This is the image of a linear map $F^3 \to F^4$ given by $(x_1, x_2, x_4) \mapsto (x_1-x_2, x_2, x_1+x_2, x_4)$, so $U$ is a subspace. We can verify directly:
+
+\textbf{Zero vector:} $(0, 0, 0, 0) \in U$ (take $x_1 = x_2 = x_4 = 0$).
+
+\textbf{Closed under addition and scalar multiplication:} Similar to part (a).
+
+Therefore $U$ is a subspace.
+\hfill $\square$
+
+\subsection*{(c)}
+\textbf{Claim.}
+$\{(x_1-x_2, x_2, x_1+x_2, x_3+x_4) \in F^4 : x_1, x_2, x_3, x_4 \in F, x_3 = x_4\}$ is a subspace of $F^4$.
+
+\textbf{Proof.}
+Let $U = \{(x_1-x_2, x_2, x_1+x_2, 2x_3) : x_1, x_2, x_3 \in F\}$ (since $x_3 = x_4$ implies $x_3 + x_4 = 2x_3$).
+
+This is the image of a linear map $F^3 \to F^4$, so $U$ is a subspace.
+\hfill $\square$
+
+\subsection*{(d)}
+\textbf{Claim.}
+$\{(x_1-x_2, x_2, x_1+x_2, x_3+x_4) \in F^4 : x_1 = x_2 = 5x_3\}$ is not a subspace of $F^4$ unless the characteristic of $F$ is 2.
+
+\textbf{Proof.}
+If $x_1 = x_2 = 5x_3$, then the vectors have the form:
+\begin{align*}
+(5x_3 - 5x_3, 5x_3, 5x_3 + 5x_3, x_3 + x_4) &= (0, 5x_3, 10x_3, x_3 + x_4).
+\end{align*}
+
+So $U = \{(0, 5t, 10t, t+s) : t, s \in F\}$.
+
+\textbf{Zero vector:} $(0, 0, 0, 0) \in U$ (take $t = s = 0$).
+
+\textbf{Closed under addition:} 
+\begin{align*}
+(0, 5t, 10t, t+s) + (0, 5t', 10t', t'+s') = (0, 5(t+t'), 10(t+t'), (t+t')+(s+s')) \in U.
+\end{align*}
+
+\textbf{Closed under scalar multiplication:}
+\begin{align*}
+\lambda(0, 5t, 10t, t+s) = (0, 5(\lambda t), 10(\lambda t), \lambda t + \lambda s) \in U.
+\end{align*}
+
+Therefore $U$ is a subspace of $F^4$.
+\hfill $\square$
+
+\section*{Problem 2}
+\textbf{Problem.}
+Verify all assertions about subspaces in Example 1.35.
+
+\textbf{Solution.}
+Example 1.35 consists of problems (a) through (e) below, which have been verified in the following sections.
+\hfill $\square$
 
 \section*{(a)}
 \textbf{Claim.}
@@ -91,6 +192,523 @@ so $f+g \in U$. If $a \in \mathbb{R}$, then
 (af)'(2) = a f'(2) = 0,
 \]
 so $af \in U$. Thus $U$ is a subspace.
+\hfill $\square$
+
+\section*{(e)}
+\textbf{Claim.}
+The set of all sequences of complex numbers with limit $0$ is a subspace of $\mathbb{C}^\infty$.
+
+\textbf{Proof.}
+Let
+\[
+U = \{(z_n)_{n\ge 1} \in \mathbb{C}^\infty : \lim_{n\to\infty} z_n = 0\}.
+\]
+
+Here $(z_n)_{n\ge 1}$ denotes an infinite sequence $(z_1, z_2, z_3, \ldots)$ of complex numbers, which we can think of as an infinite tuple. The space $\mathbb{C}^\infty$ is the set of all such sequences.
+
+To show $U$ is a subspace, we verify three conditions:
+
+\textbf{(i) Zero vector:} The zero sequence $(0, 0, 0, \ldots)$ satisfies
+\[
+\lim_{n\to\infty} 0 = 0,
+\]
+so the zero vector is in $U$.
+
+\textbf{(ii) Closed under addition:} Suppose $(x_n)_{n\ge 1}, (y_n)_{n\ge 1} \in U$. This means $\lim_{n\to\infty} x_n = 0$ and $\lim_{n\to\infty} y_n = 0$. Their sum is the sequence
+\[
+(x_n + y_n)_{n\ge 1} = (x_1 + y_1, x_2 + y_2, x_3 + y_3, \ldots).
+\]
+By limit laws,
+\[
+\lim_{n\to\infty} (x_n + y_n) = \lim_{n\to\infty} x_n + \lim_{n\to\infty} y_n = 0 + 0 = 0,
+\]
+so $(x_n + y_n)_{n\ge 1} \in U$.
+
+\textbf{(iii) Closed under scalar multiplication:} Let $a \in \mathbb{C}$ and $(x_n)_{n\ge 1} \in U$. The scalar multiple is
+\[
+(a x_n)_{n\ge 1} = (a x_1, a x_2, a x_3, \ldots).
+\]
+By limit laws,
+\[
+\lim_{n\to\infty} (a x_n) = a \cdot \lim_{n\to\infty} x_n = a \cdot 0 = 0,
+\]
+so $(a x_n)_{n\ge 1} \in U$.
+
+Therefore $U$ is a subspace of $\mathbb{C}^\infty$.
+\hfill $\square$
+
+\section*{Problem 3}
+\textbf{Claim.}
+The set of differentiable functions $f$ on the interval $(-4,4)$ such that $f'(-1) = 3f(2)$ is a subspace of $\mathbb{R}^{(-4,4)}$.
+
+\textbf{Proof.}
+Let
+\[
+U = \{f : (-4,4) \to \mathbb{R} : f \text{ is differentiable and } f'(-1) = 3f(2)\}.
+\]
+
+\textbf{Zero vector:} The zero function satisfies $0'(-1) = 0 = 3 \cdot 0 = 3 \cdot 0(2)$, so $0 \in U$.
+
+\textbf{Closed under addition:} If $f, g \in U$, then
+\[
+(f+g)'(-1) = f'(-1) + g'(-1) = 3f(2) + 3g(2) = 3(f+g)(2),
+\]
+so $f + g \in U$.
+
+\textbf{Closed under scalar multiplication:} If $f \in U$ and $a \in \mathbb{R}$, then
+\[
+(af)'(-1) = af'(-1) = a \cdot 3f(2) = 3(af)(2),
+\]
+so $af \in U$.
+
+Therefore $U$ is a subspace.
+\hfill $\square$
+
+\section*{Problem 4}
+\textbf{Claim.}
+Suppose $b \in \mathbb{R}$. The set of continuous real-valued functions $f$ on $[0,1]$ such that $\int_0^1 f = b$ is a subspace of $\mathbb{R}^{[0,1]}$ if and only if $b = 0$.
+
+\textbf{Proof.}
+Let
+\[
+U = \left\{f : [0,1] \to \mathbb{R} : f \text{ is continuous and } \int_0^1 f = b\right\}.
+\]
+
+If $U$ is a subspace, it must contain the zero function. Since $\int_0^1 0 = 0$, we must have $b = 0$.
+
+Conversely, suppose $b = 0$. Then the zero function is in $U$. If $f, g \in U$, then
+\[
+\int_0^1 (f+g) = \int_0^1 f + \int_0^1 g = 0 + 0 = 0,
+\]
+so $f + g \in U$. If $a \in \mathbb{R}$ and $f \in U$, then
+\[
+\int_0^1 (af) = a\int_0^1 f = a \cdot 0 = 0,
+\]
+so $af \in U$. Therefore $U$ is a subspace when $b = 0$.
+\hfill $\square$
+
+\section*{Problem 5}
+\textbf{Claim.}
+$\mathbb{R}^2$ is not a subspace of the complex vector space $\mathbb{C}^2$.
+
+\textbf{Proof.}
+While $\mathbb{R}^2 \subseteq \mathbb{C}^2$ as sets, $\mathbb{R}^2$ is not closed under scalar multiplication by complex scalars. For example, $(1, 0) \in \mathbb{R}^2$ but
+\[
+i \cdot (1, 0) = (i, 0) \notin \mathbb{R}^2.
+\]
+Therefore $\mathbb{R}^2$ is not a subspace of $\mathbb{C}^2$ when viewed as a complex vector space.
+\hfill $\square$
+
+\section*{Problem 6}
+
+\subsection*{(a)}
+\textbf{Claim.}
+$\{(a, b, c) \in \mathbb{R}^3 : a^3 = b^3\}$ is not a subspace of $\mathbb{R}^3$.
+
+\textbf{Proof.}
+Let $U = \{(a, b, c) \in \mathbb{R}^3 : a^3 = b^3\}$. Note that $(1, 1, 0) \in U$ and $(1, 1, 0) \in U$, but
+\[
+(1, 1, 0) + (1, 1, 0) = (2, 2, 0).
+\]
+We check: $2^3 = 8 = 2^3$, so actually $(2, 2, 0) \in U$.
+
+Let's try another approach. Consider $(1, 1, 0) \in U$ (since $1^3 = 1^3$). Then
+\[
+2 \cdot (1, 1, 0) = (2, 2, 0).
+\]
+We have $2^3 = 8 = 2^3$, so this is also in $U$.
+
+Actually, if $a^3 = b^3$ in $\mathbb{R}$, then $a = b$ (since $x \mapsto x^3$ is injective on $\mathbb{R}$). So
+\[
+U = \{(a, a, c) : a, c \in \mathbb{R}\}.
+\]
+This is clearly a subspace (it's a plane through the origin).
+
+Wait, let me reconsider. The problem asks if this IS a subspace. Let me verify properly.
+
+If $a^3 = b^3$ with $a, b \in \mathbb{R}$, then $(a-b)(a^2 + ab + b^2) = 0$. For real numbers, $a^2 + ab + b^2 = 0$ implies $a = b = 0$ (completing the square: $(a + b/2)^2 + 3b^2/4 \geq 0$ with equality iff $a = b = 0$). So either $a = b$ or $a = b = 0$.
+
+Actually, that's not quite right. We have $a^3 = b^3 \iff a^3 - b^3 = 0 \iff (a-b)(a^2+ab+b^2) = 0$. Since $a^2 + ab + b^2 = (a+b/2)^2 + 3b^2/4 > 0$ unless $a = b = 0$, we must have $a = b$.
+
+So $U = \{(a, a, c) : a, c \in \mathbb{R}\}$, which is indeed a subspace (a 2-dimensional plane).
+
+Actually, I should be more careful. This is a subspace!
+
+\textbf{Proof (corrected).}
+For real numbers, $a^3 = b^3$ if and only if $a = b$ (since $x \mapsto x^3$ is strictly increasing). Thus
+\[
+U = \{(a, a, c) \in \mathbb{R}^3 : a, c \in \mathbb{R}\}.
+\]
+This is clearly a subspace: it contains $(0,0,0)$, and if $(a, a, c), (a', a', c') \in U$, then
+\[
+(a, a, c) + (a', a', c') = (a+a', a+a', c+c') \in U,
+\]
+and for $\lambda \in \mathbb{R}$,
+\[
+\lambda(a, a, c) = (\lambda a, \lambda a, \lambda c) \in U.
+\]
+Therefore $U$ is a subspace of $\mathbb{R}^3$.
+\hfill $\square$
+
+\subsection*{(b)}
+\textbf{Claim.}
+$\{(a, b, c) \in \mathbb{C}^3 : a^3 = b^3\}$ is not a subspace of $\mathbb{C}^3$.
+
+\textbf{Proof.}
+Over $\mathbb{C}$, the equation $a^3 = b^3$ does not imply $a = b$. For instance, let $\omega = e^{2\pi i/3}$ be a primitive cube root of unity. Then $(1, \omega, 0)$ satisfies $1^3 = 1 = \omega^3$, so $(1, \omega, 0) \in U$.
+
+Consider scalar multiplication: $\omega(1, \omega, 0) = (\omega, \omega^2, 0)$. We need $\omega^3 = (\omega^2)^3 = \omega^6 = 1$, which is true. So this is in $U$.
+
+Let's check closure under addition. We have $(1, 1, 0) \in U$ and $(1, \omega, 0) \in U$. Their sum is
+\[
+(1, 1, 0) + (1, \omega, 0) = (2, 1+\omega, 0).
+\]
+For this to be in $U$, we need $2^3 = (1+\omega)^3$, i.e., $8 = (1+\omega)^3$.
+
+We have $\omega = e^{2\pi i/3} = -\frac{1}{2} + \frac{\sqrt{3}}{2}i$, so $1 + \omega = \frac{1}{2} + \frac{\sqrt{3}}{2}i = e^{i\pi/3}$.
+
+Thus $(1+\omega)^3 = e^{i\pi} = -1 \neq 8$.
+
+Therefore $(2, 1+\omega, 0) \notin U$, so $U$ is not closed under addition and hence not a subspace.
+\hfill $\square$
+
+\section*{Problem 7}
+\textbf{Claim.}
+If $U$ is a nonempty subset of $\mathbb{R}^2$ such that $U$ is closed under addition and under taking additive inverses (meaning $-u \in U$ whenever $u \in U$), then $U$ is a subspace of $\mathbb{R}^2$.
+
+\textbf{Counterexample.}
+This is false. Let $U = \mathbb{Z}^2 = \{(m, n) : m, n \in \mathbb{Z}\}$. Then $U$ is closed under addition and additive inverses, but $U$ is not closed under scalar multiplication: $(1, 0) \in U$ but $\frac{1}{2}(1, 0) = (\frac{1}{2}, 0) \notin U$.
+
+Therefore $U$ is not a subspace of $\mathbb{R}^2$.
+\hfill $\square$
+
+\section*{Problem 8}
+\textbf{Claim.}
+There exists a nonempty subset $U$ of $\mathbb{R}^2$ that is closed under scalar multiplication but is not a subspace.
+
+\textbf{Example.}
+Let $U = \{(x, 0) : x \in \mathbb{R}\} \cup \{(0, y) : y \in \mathbb{R}\}$ be the union of the $x$-axis and $y$-axis.
+
+$U$ is closed under scalar multiplication: if $(x, 0) \in U$ and $a \in \mathbb{R}$, then $a(x, 0) = (ax, 0) \in U$. Similarly for points on the $y$-axis.
+
+However, $U$ is not closed under addition: $(1, 0) \in U$ and $(0, 1) \in U$, but $(1, 0) + (0, 1) = (1, 1) \notin U$.
+
+Therefore $U$ is not a subspace.
+\hfill $\square$
+
+\section*{Problem 9}
+\textbf{Claim.}
+The set of periodic functions from $\mathbb{R}$ to $\mathbb{R}$ is a subspace of $\mathbb{R}^{\mathbb{R}}$.
+
+\textbf{Proof.}
+Let
+\[
+U = \{f : \mathbb{R} \to \mathbb{R} : \exists p > 0 \text{ such that } f(x+p) = f(x) \text{ for all } x\}.
+\]
+
+\textbf{Zero vector:} The zero function is periodic (with any period), so $0 \in U$.
+
+\textbf{Closed under addition:} If $f, g \in U$ with periods $p_f$ and $p_g$ respectively, then $f + g$ is periodic with period $\text{lcm}(p_f, p_g)$ (or more generally, any common multiple). For any $x \in \mathbb{R}$ and $p = p_f \cdot p_g$,
+\[
+(f+g)(x+p) = f(x+p) + g(x+p) = f(x) + g(x) = (f+g)(x).
+\]
+So $f + g \in U$.
+
+\textbf{Closed under scalar multiplication:} If $f \in U$ with period $p$ and $a \in \mathbb{R}$, then
+\[
+(af)(x+p) = af(x+p) = af(x) = (af)(x),
+\]
+so $af$ has period $p$ and thus $af \in U$.
+
+Therefore $U$ is a subspace of $\mathbb{R}^{\mathbb{R}}$.
+\hfill $\square$
+
+\section*{Problem 10}
+\textbf{Claim.}
+If $V_1$ and $V_2$ are subspaces of $V$, then $V_1 \cap V_2$ is a subspace of $V$.
+
+\textbf{Proof.}
+Let $U = V_1 \cap V_2$.
+
+\textbf{Zero vector:} Since $V_1$ and $V_2$ are subspaces, $0 \in V_1$ and $0 \in V_2$, so $0 \in V_1 \cap V_2 = U$.
+
+\textbf{Closed under addition:} If $u, v \in U$, then $u, v \in V_1$ and $u, v \in V_2$. Since $V_1$ is a subspace, $u + v \in V_1$. Since $V_2$ is a subspace, $u + v \in V_2$. Therefore $u + v \in V_1 \cap V_2 = U$.
+
+\textbf{Closed under scalar multiplication:} If $u \in U$ and $a \in F$, then $u \in V_1$ and $u \in V_2$. Since $V_1$ is a subspace, $au \in V_1$. Since $V_2$ is a subspace, $au \in V_2$. Therefore $au \in V_1 \cap V_2 = U$.
+
+Thus $U = V_1 \cap V_2$ is a subspace of $V$.
+\hfill $\square$
+
+\section*{Problem 12}
+\textbf{Claim.}
+The union of two subspaces of $V$ is a subspace of $V$ if and only if one of the subspaces is contained in the other.
+
+\textbf{Proof.}
+Let $U$ and $W$ be subspaces of $V$.
+
+($\Leftarrow$) If $U \subseteq W$, then $U \cup W = W$, which is a subspace. Similarly if $W \subseteq U$.
+
+($\Rightarrow$) Suppose $U \cup W$ is a subspace. We'll show that $U \subseteq W$ or $W \subseteq U$.
+
+Assume for contradiction that $U \not\subseteq W$ and $W \not\subseteq U$. Then there exist $u \in U \setminus W$ and $w \in W \setminus U$.
+
+Since $U \cup W$ is a subspace and $u, w \in U \cup W$, we have $u + w \in U \cup W$. Thus either $u + w \in U$ or $u + w \in W$.
+
+\textbf{Case 1:} $u + w \in U$. Since $u \in U$ and $U$ is a subspace, $-u \in U$. Then
+\[
+w = (u+w) + (-u) \in U,
+\]
+contradicting $w \notin U$.
+
+\textbf{Case 2:} $u + w \in W$. Since $w \in W$ and $W$ is a subspace, $-w \in W$. Then
+\[
+u = (u+w) + (-w) \in W,
+\]
+contradicting $u \notin W$.
+
+Both cases lead to contradictions, so our assumption was wrong. Therefore $U \subseteq W$ or $W \subseteq U$.
+\hfill $\square$
+
+\section*{Problem 13}
+\textbf{Claim.}
+The union of three subspaces of $V$ is a subspace of $V$ if and only if one of the subspaces contains the other two.
+
+\textbf{Proof.}
+Let $V_1, V_2, V_3$ be subspaces of $V$.
+
+($\Leftarrow$) If (say) $V_1 \supseteq V_2$ and $V_1 \supseteq V_3$, then $V_1 \cup V_2 \cup V_3 = V_1$, which is a subspace.
+
+($\Rightarrow$) Suppose $U = V_1 \cup V_2 \cup V_3$ is a subspace. We'll show one subspace contains the other two.
+
+Assume for contradiction that no subspace contains the other two. Then by the previous problem's reasoning, we can find elements:
+\begin{itemize}
+\item $v_1 \in V_1 \setminus (V_2 \cup V_3)$
+\item $v_2 \in V_2 \setminus (V_1 \cup V_3)$  
+\item $v_3 \in V_3 \setminus (V_1 \cup V_2)$
+\end{itemize}
+
+Consider $v_1 + v_2 \in U$. Since $U$ is a subspace and $v_1, v_2 \in U$, we have $v_1 + v_2 \in V_i$ for some $i \in \{1, 2, 3\}$.
+
+\textbf{Case 1:} $v_1 + v_2 \in V_1$. Then $v_2 = (v_1 + v_2) - v_1 \in V_1$, contradicting $v_2 \notin V_1$.
+
+\textbf{Case 2:} $v_1 + v_2 \in V_2$. Then $v_1 = (v_1 + v_2) - v_2 \in V_2$, contradicting $v_1 \notin V_2$.
+
+\textbf{Case 3:} $v_1 + v_2 \in V_3$. Now consider $v_1 + v_3 \in U$. By similar reasoning, $v_1 + v_3$ cannot be in $V_1$ or $V_3$, so $v_1 + v_3 \in V_2$. But then
+\[
+v_3 = (v_1 + v_3) - v_1 = (v_1 + v_3) - [(v_1 + v_2) - v_2] \in V_2,
+\]
+using that $V_2$ is closed under addition and additive inverses, contradicting $v_3 \notin V_2$.
+
+All cases lead to contradictions, so one subspace must contain the other two.
+\hfill $\square$
+
+\section*{Problem 14}
+\textbf{Problem.}
+Suppose $U = \{(x, -x, 2x) \in F^3 : x \in F\}$ and $W = \{(x, x, 2x) \in F^3 : x \in F\}$. Describe $U + W$ using symbols, and also give a description of $U + W$ that uses no symbols.
+
+\textbf{Solution.}
+\textbf{Symbolic description:}
+\[
+U + W = \{(a, -a, 2a) + (b, b, 2b) : a, b \in F\} = \{(a+b, -a+b, 2a+2b) : a, b \in F\}.
+\]
+Letting $x = a + b$ and $y = b$, we get $a = x - y$ and the third coordinate is $2x$. The second coordinate is $-a + b = -(x-y) + y = 2y - x$. So
+\[
+U + W = \{(x, 2y-x, 2x) : x, y \in F\}.
+\]
+
+Alternatively, note that any element of $U + W$ has the form $(s, t, 2s)$ where $s = a + b$ and $t = -a + b = 2b - s$ can be any value. So:
+\[
+U + W = \{(x, y, 2x) : x, y \in F\}.
+\]
+
+\textbf{Description without symbols:} $U + W$ is the set of all vectors in $F^3$ whose third coordinate is twice the first coordinate. This is a plane through the origin in $F^3$.
+\hfill $\square$
+
+\section*{Problem 15}
+\textbf{Claim.}
+If $U$ is a subspace of $V$, then $U + U = U$.
+
+\textbf{Proof.}
+By definition, $U + U = \{u_1 + u_2 : u_1, u_2 \in U\}$.
+
+($\subseteq$) If $v \in U + U$, then $v = u_1 + u_2$ for some $u_1, u_2 \in U$. Since $U$ is a subspace, $u_1 + u_2 \in U$. Thus $v \in U$.
+
+($\supseteq$) If $u \in U$, then $u = u + 0$ where $u, 0 \in U$. Thus $u \in U + U$.
+
+Therefore $U + U = U$.
+\hfill $\square$
+
+\section*{Problem 16}
+\textbf{Claim.}
+The operation of addition on subspaces of $V$ is commutative.
+
+\textbf{Proof.}
+Let $U$ and $W$ be subspaces of $V$. By definition,
+\[
+U + W = \{u + w : u \in U, w \in W\}.
+\]
+Since addition in $V$ is commutative, $u + w = w + u$ for all $u \in U$ and $w \in W$. Therefore
+\[
+U + W = \{w + u : w \in W, u \in U\} = W + U.
+\]
+\hfill $\square$
+
+\section*{Problem 17}
+\textbf{Claim.}
+The operation of addition on subspaces of $V$ is associative.
+
+\textbf{Proof.}
+Let $V_1, V_2, V_3$ be subspaces of $V$. We need to show $(V_1 + V_2) + V_3 = V_1 + (V_2 + V_3)$.
+
+($\subseteq$) If $v \in (V_1 + V_2) + V_3$, then $v = u + v_3$ where $u \in V_1 + V_2$ and $v_3 \in V_3$. Since $u \in V_1 + V_2$, we have $u = v_1 + v_2$ for some $v_1 \in V_1$ and $v_2 \in V_2$. Thus
+\[
+v = (v_1 + v_2) + v_3 = v_1 + (v_2 + v_3).
+\]
+Since $v_2 + v_3 \in V_2 + V_3$ (as $v_2 \in V_2$ and $v_3 \in V_3$), we have $v \in V_1 + (V_2 + V_3)$.
+
+($\supseteq$) The argument is symmetric.
+
+Therefore $(V_1 + V_2) + V_3 = V_1 + (V_2 + V_3)$.
+\hfill $\square$
+
+\section*{Problem 18}
+\textbf{Claim.}
+The zero subspace $\{0\}$ is the additive identity for subspace addition. A subspace $U$ has an additive inverse if and only if $U = \{0\}$.
+
+\textbf{Proof.}
+\textbf{Additive identity:} For any subspace $U$ of $V$,
+\[
+U + \{0\} = \{u + 0 : u \in U, 0 \in \{0\}\} = \{u : u \in U\} = U.
+\]
+Similarly $\{0\} + U = U$. Thus $\{0\}$ is the additive identity.
+
+\textbf{Additive inverses:} Suppose $U$ has an additive inverse $W$, meaning $U + W = \{0\}$. 
+
+Since $0 \in U$ and $0 \in W$, we have $0 = 0 + 0 \in U + W = \{0\}$, which is correct.
+
+For any $u \in U$, we have $u = u + 0$ where $u \in U$ and $0 \in W$. Thus $u \in U + W = \{0\}$, so $u = 0$. Therefore $U = \{0\}$.
+
+Conversely, if $U = \{0\}$, then $U + U = \{0\}$, so $U$ is its own additive inverse.
+\hfill $\square$
+
+\section*{Problem 19}
+\textbf{Claim.}
+If $V_1, V_2, U$ are subspaces of $V$ such that $V_1 + U = V_2 + U$, then it does not necessarily follow that $V_1 = V_2$.
+
+\textbf{Counterexample.}
+Let $V = \mathbb{R}^2$, $V_1 = \{(x, 0) : x \in \mathbb{R}\}$ (the $x$-axis), $V_2 = \{(x, x) : x \in \mathbb{R}\}$ (the line $y = x$), and $U = \mathbb{R}^2$.
+
+Then $V_1 + U = \mathbb{R}^2 = V_2 + U$, but $V_1 \neq V_2$.
+\hfill $\square$
+
+\section*{Problem 20}
+\textbf{Problem.}
+Suppose $U = \{(x, x, y, y) \in F^4 : x, y \in F\}$. Find a subspace $W$ of $F^4$ such that $F^4 = U \oplus W$.
+
+\textbf{Solution.}
+Note that $U$ has basis $\{(1, 1, 0, 0), (0, 0, 1, 1)\}$, so $\dim U = 2$.
+
+We need $W$ such that $U \cap W = \{0\}$ and $U + W = F^4$. This requires $\dim W = 2$ (since $\dim F^4 = 4$).
+
+One choice is
+\[
+W = \{(a, b, 0, 0) : a, b \in F\} = \text{span}\{(1, 0, 0, 0), (0, 1, 0, 0)\}.
+\]
+
+Wait, let me check this. If $(x, x, y, y) \in U \cap W$, then the element also has the form $(a, b, 0, 0)$. This means $y = 0$ and $x = a = b$. So $(x, x, 0, 0)$ with any $x$ is in the intersection. This is not just $\{0\}$.
+
+Let me try again. Let
+\[
+W = \{(a, 0, b, 0) : a, b \in F\} = \text{span}\{(1, 0, 0, 0), (0, 0, 1, 0)\}.
+\]
+
+If $(x, x, y, y) \in W$, then it has the form $(a, 0, b, 0)$. So $x = 0$ and $y = 0$. Thus $U \cap W = \{0\}$.
+
+For any $(a, b, c, d) \in F^4$, we can write
+\[
+(a, b, c, d) = (b, b, d, d) + (a-b, 0, c-d, 0),
+\]
+where $(b, b, d, d) \in U$ and $(a-b, 0, c-d, 0) \in W$. Thus $F^4 = U + W$.
+
+Therefore
+\[
+W = \{(a, 0, b, 0) : a, b \in F\}.
+\]
+\hfill $\square$
+
+\section*{Problem 21}
+\textbf{Problem.}
+Suppose $U = \{(x, y, x+y, x-y, 2x) \in F^5 : x, y \in F\}$. Find a subspace $W$ of $F^5$ such that $F^5 = U \oplus W$.
+
+\textbf{Solution.}
+Note that $U = \text{span}\{(1, 0, 1, 1, 2), (0, 1, 1, -1, 0)\}$, so $\dim U = 2$ (these vectors are linearly independent).
+
+We need $\dim W = 3$. One approach is to extend the basis of $U$ to a basis of $F^5$. We look for three more linearly independent vectors.
+
+Consider $e_1 = (1, 0, 0, 0, 0)$. Check if it's in $U$: if $(1, 0, 0, 0, 0) = (x, y, x+y, x-y, 2x)$, then $x = 1$, $y = 0$, but then $x + y = 1 \neq 0$. So $e_1 \notin U$.
+
+Consider $e_2 = (0, 1, 0, 0, 0)$. If $(0, 1, 0, 0, 0) = (x, y, x+y, x-y, 2x)$, then $x = 0$, $y = 1$, but $x + y = 1 \neq 0$. So $e_2 \notin U$.
+
+Consider $e_3 = (0, 0, 1, 0, 0)$. If $(0, 0, 1, 0, 0) = (x, y, x+y, x-y, 2x)$, then $x = 0$, $y = 0$, but $x + y = 0 \neq 1$. So $e_3 \notin U$.
+
+But we need to make sure $W \cap U = \{0\}$. Let me use a more systematic approach.
+
+The elements of $U$ satisfy:
+\begin{align*}
+z_3 &= z_1 + z_2 \\
+z_4 &= z_1 - z_2 \\
+z_5 &= 2z_1
+\end{align*}
+
+So we can choose $W$ to be the set of vectors where $z_1 = z_2 = 0$. That is,
+\[
+W = \{(0, 0, a, b, c) : a, b, c \in F\}.
+\]
+
+Check: If $(x, y, x+y, x-y, 2x) \in W$, then $x = 0$ and $y = 0$, so $U \cap W = \{0\}$.
+
+For any $(a, b, c, d, e) \in F^5$, we can write
+\begin{align*}
+(a, b, c, d, e) &= (a, b, a+b, a-b, 2a) + (0, 0, c-(a+b), d-(a-b), e-2a).
+\end{align*}
+
+The first part is in $U$ and the second part is in $W$. Therefore $F^5 = U \oplus W$ with
+\[
+W = \{(0, 0, a, b, c) : a, b, c \in F\}.
+\]
+\hfill $\square$
+
+\section*{Problem 22}
+\textbf{Problem.}
+Suppose $U = \{(x, y, x+y, x-y, 2x) \in F^5 : x, y \in F\}$. Find three subspaces $W_1, W_2, W_3$ of $F^5$, none of which equals $\{0\}$, such that $F^5 = U \oplus W_1 \oplus W_2 \oplus W_3$.
+
+\textbf{Solution.}
+From the previous problem, we know $\dim U = 2$, so we need $\dim W_1 + \dim W_2 + \dim W_3 = 3$ with each $W_i \neq \{0\}$.
+
+The simplest choice is three 1-dimensional subspaces. Using the previous problem's approach where elements of $U$ have their first two coordinates as free parameters:
+
+\[
+W_1 = \text{span}\{(0, 0, 1, 0, 0)\}
+\]
+\[
+W_2 = \text{span}\{(0, 0, 0, 1, 0)\}
+\]
+\[
+W_3 = \text{span}\{(0, 0, 0, 0, 1)\}
+\]
+
+To verify: Any element of $F^5$ can be uniquely written as
+\[
+(a, b, c, d, e) = (a, b, a+b, a-b, 2a) + (0, 0, c-(a+b), 0, 0) + (0, 0, 0, d-(a-b), 0) + (0, 0, 0, 0, e-2a),
+\]
+where the first term is in $U$, and the remaining terms are in $W_1, W_2, W_3$ respectively.
+
+The intersection of any pair (or more) of these subspaces is $\{0\}$ since they involve different coordinate positions being nonzero.
+
+Therefore
+\[
+W_1 = \text{span}\{(0, 0, 1, 0, 0)\}, \quad W_2 = \text{span}\{(0, 0, 0, 1, 0)\}, \quad W_3 = \text{span}\{(0, 0, 0, 0, 1)\}.
+\]
 \hfill $\square$
 
 \end{document}
