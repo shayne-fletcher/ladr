@@ -1,0 +1,96 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\title{Section 1C: Subspaces\\Worked Solutions (a)--(d)}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{Problem Setup}
+Let $F$ be a field and $V$ a vector space over $F$. For each part below, we determine whether the given set is a subspace and justify the claim.
+
+\section*{(a)}
+\textbf{Claim.}
+If $b \in F$, then
+\[
+U = \{(x_1,x_2,x_3,x_4) \in F^4 : x_3 = 5x_4 + b\}
+\]
+is a subspace of $F^4$ if and only if $b = 0$.
+
+\textbf{Proof.}
+The zero vector $(0,0,0,0)$ lies in $U$ if and only if
+\[
+0 = 5\cdot 0 + b \iff b = 0.
+\]
+If $b \neq 0$, then $U$ does not contain the zero vector and hence is not a subspace.
+
+If $b = 0$, then
+\[
+U = \{x \in F^4 : x_3 = 5x_4\}
+\]
+is defined by a homogeneous linear equation. One checks directly that $U$ is closed under addition and scalar multiplication, hence is a subspace.
+\hfill $\square$
+
+\section*{(b)}
+\textbf{Claim.}
+The set of continuous real-valued functions on $[0,1]$ is a subspace of $\mathbb{R}^{[0,1]}$.
+
+\textbf{Proof.}
+Let
+\[
+U = \{f : [0,1] \to \mathbb{R} : f \text{ is continuous}\}.
+\]
+The zero function is continuous, so $0 \in U$. If $f,g \in U$, then $f+g$ is continuous, and if $a \in \mathbb{R}$ then $af$ is continuous. Thus $U$ is closed under addition and scalar multiplication, hence is a subspace.
+\hfill $\square$
+
+\section*{(c)}
+\textbf{Claim.}
+The set of differentiable real-valued functions on $\mathbb{R}$ is a subspace of $\mathbb{R}^{\mathbb{R}}$.
+
+\textbf{Proof.}
+Let
+\[
+U = \{f : \mathbb{R} \to \mathbb{R} : f \text{ is differentiable}\}.
+\]
+The zero function is differentiable, so $0 \in U$. If $f,g \in U$, then $f+g$ is differentiable with
+\[
+(f+g)' = f' + g'.
+\]
+If $a \in \mathbb{R}$, then $af$ is differentiable with
+\[
+(af)' = a f'.
+\]
+Thus $U$ is closed under addition and scalar multiplication, and hence is a subspace.
+\hfill $\square$
+
+\section*{(d)}
+\textbf{Claim.}
+The set of differentiable real-valued functions $f$ on $(0,3)$ such that $f'(2) = b$ is a subspace of $\mathbb{R}^{(0,3)}$ if and only if $b = 0$.
+
+\textbf{Proof.}
+Let
+\[
+U = \{f : (0,3) \to \mathbb{R} : f \text{ is differentiable and } f'(2) = b\}.
+\]
+If $U$ is a subspace, it must contain the zero function. Since $0'(2) = 0$, this forces $b = 0$.
+
+Conversely, if $b = 0$, then
+\[
+U = \{f : f'(2) = 0\}.
+\]
+The zero function lies in $U$. If $f,g \in U$, then
+\[
+(f+g)'(2) = f'(2) + g'(2) = 0,
+\]
+so $f+g \in U$. If $a \in \mathbb{R}$, then
+\[
+(af)'(2) = a f'(2) = 0,
+\]
+so $af \in U$. Thus $U$ is a subspace.
+\hfill $\square$
+
+\end{document}
